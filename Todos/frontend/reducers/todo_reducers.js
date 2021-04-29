@@ -1,4 +1,4 @@
-import { RECEIVE_TODO, RECEIVE_TODOS } from "../actions/action";
+import { RECEIVE_TODO, RECEIVE_TODOS, REMOVE_TODO } from "../actions/todo_actions";
 
 const initialState = {
   1: {
@@ -19,18 +19,21 @@ const todosReducer = (state = initialState, action) => {
   Object.freeze(state);
 
   const newState = Object.assign({}, state);
-  debugger;
+  
   switch (action.type) {
     case RECEIVE_TODO:
-      debugger;
-      newState[action.todo.id] = aciton.todo;
+      
+      newState[action.todo.id] = action.todo;
       return newState;
     case RECEIVE_TODOS:
-      debugger;
+      
       action.todos.forEach(todo => {
         newState[todo.id] = todo;
       });
       return newState;
+    case REMOVE_TODO:
+        delete newState[action.todo.id];
+        return newState;
     default:
       return state;
   }
