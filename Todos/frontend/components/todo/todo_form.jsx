@@ -15,6 +15,7 @@ class TodoFrom extends React.Component {
         this.updateTitle = this.updateTitle.bind(this);
         this.updateBody = this.updateBody.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleButton = this.handleSubmit.bind(this);
     }
 
     updateTitle(e){
@@ -23,6 +24,10 @@ class TodoFrom extends React.Component {
 
     updateBody(e){
         this.setState({body: e.target.value});
+    }
+
+    handleButton(e) {
+        this.setState({done: true})
     }
 
     handleSubmit(e){
@@ -41,7 +46,6 @@ class TodoFrom extends React.Component {
 
     }
 
-
     render(){
         return (
         <form onSubmit={this.handleSubmit}>
@@ -52,8 +56,9 @@ class TodoFrom extends React.Component {
             <label>Body
                 <input type="text" value= {this.state.body} onChange={this.updateBody}/>
             </label>
-
+            <button onClick={this.handleButton}>Done</button>
             <input type="submit" value="Add to Todo List"/>
+             
         </form>
         )
     }

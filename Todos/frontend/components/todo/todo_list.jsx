@@ -11,7 +11,7 @@ const TodoList = (props) => {
                     return (<TodoListItem key= {todo.id} todo={todo} />)
                 })}
             </ul>
-                <TodoForm receiveTodo = {props.receiveTodo} />
+                <TodoForm receiveTodo = {props.receiveTodo} removeTodo = {props.removeTodo}/>
         </div>
     )
 }
